@@ -1,75 +1,20 @@
-/*import express from 'express';
-import filmsRouter from './routers/films';
+import express from 'express';
+import ordersRouter from './routers/orders.js';
 import 'dotenv/config'; // importing library https://www.npmjs.com/package/dotenv
 import pg from 'pg';
 
+    
 
-
-const app = express();
-const { Pool } = pg;
-
-app.use(express.json());
-app.use ('api/films', filmsRouter);
-
-*/
-//two API routes for getting and adding countries
-/*
-app.get('/api/names', (req, res) => {
-    res.json(countries);
-  });
-  */
-  
-
-
-//const pool = new Pool ()
-// ({
-//we will comment out everything because dotenv library is intelligent and will understand  . It will find .env file  
-/*
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-port: process.env.PGPORT, */
-//});
-
-
-//console.log(process.env.PGUSER) //added line later and the terminal will say"undefined".njs Server cannot read environment properties we just set up
-//we created nodejs from scratch. my scripts are missing. dotenv file cant be read. we need special package
-//solution: Dotenv is a zero-dependency module that loads environment variables from a .env
-//yes we need env var
-/*const fetchData = async () => {
-    try {
-      const result = await pool.query('SELECT NOW()');
-      console.log('Data retrieved:', result.rows);
-    } catch (err) {
-      console.error('Error retrieving data:', err);
-    }
-  };
-  
-  fetchData();
-  
-  const port = process.env.PORT || 8080;
-  
-  app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-  });
-  */
-  import express from 'express';
-  import filmsRouter from '../routers/films';
-  import 'dotenv/config';
-  import pg from 'pg';
+  process.env.DB_PASSWORD
   
   const app = express();
   const { Pool } = pg;
   
   app.use(express.json());
-  app.use('/api/films', filmsRouter);
+  app.use('/api/orders', ordersRouter);
   
   const pool = new Pool();
-  
-  // ...
-  
-  // Define a route to get all users
+ 
   app.get('/api/users', async (req, res) => {
     try {
       const { rows } = await pool.query('SELECT * FROM users');
